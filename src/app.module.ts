@@ -5,6 +5,7 @@ import { AlbumModule } from './album/album.module';
 import { MusicModule } from './music/music.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AuthorModule } from './author/author.module';
+import { SearchModule } from './search/search.module';
 @Module({
   imports: [
     MusicModule, AlbumModule,AuthorModule,
@@ -17,7 +18,8 @@ import { AuthorModule } from './author/author.module';
       database: 'mus-app',
       autoLoadEntities: true,
       synchronize: true
-    })],
+    }),
+    SearchModule],
   controllers: [AppController],
   providers: [AppService],
 })

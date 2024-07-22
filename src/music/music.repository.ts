@@ -46,6 +46,11 @@ export class MusicRepository {
         return this.muscReposiotry.softDelete(id)
     }
 
+    async search(query: string) {
+        return await this.muscReposiotry
+            .createQueryBuilder('music')
+            .where('music.name LIKE :query', { query: `%${query}%` })
+            .getMany()
 
-
+    }
 }

@@ -46,4 +46,12 @@ export class AuthorRepository {
     remove(id: number) {
         return this.authorRepository.softDelete({ id })
     }
+
+    async search(query: string) {
+        return await this.authorRepository
+            .createQueryBuilder('author')
+            .where('author.firstName LIKE :query', { query: `%${query}%` })
+            .orWhere('product.lastName LIKE :query', { query: `%${query}%` })
+            .getMany()
+    }
 }

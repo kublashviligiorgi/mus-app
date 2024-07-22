@@ -46,5 +46,10 @@ export class AlbumRepository {
         return this.albumRepository.findOneBy({ id })
     }
 
-
+    async search(query: string) {
+        return await this.albumRepository
+            .createQueryBuilder('album')
+            .where('album.title LIKE :query', { query: `%${query}%` })
+            .getMany()
+    }
 }
