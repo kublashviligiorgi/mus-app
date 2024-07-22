@@ -1,6 +1,6 @@
 import { Injectable } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
-import { Music } from "./entities/music.entity";
+import { MusicEntity } from "./entities/music.entity";
 import { Repository } from "typeorm";
 import { CreateMusicDto } from "./dto/create-music.dto";
 import { UpdateMusicDto } from "./dto/update-music.dto";
@@ -8,13 +8,17 @@ import { UpdateMusicDto } from "./dto/update-music.dto";
 @Injectable()
 export class MusicRepository {
     constructor(
-        @InjectRepository(Music)
-        private muscReposiotry: Repository<Music>
+        @InjectRepository(MusicEntity)
+        private muscReposiotry: Repository<MusicEntity>
     ) { }
 
     create(data: CreateMusicDto) {
-        // const newMusic = new Music()
-        // newMusic.na
+        const newMusic = new MusicEntity()
+        newMusic.name = data.name
+        newMusic.artistId = data.aristId
+        newMusic.duration = data.duration
+
+        return this.muscReposiotry.save(newMusic)
     }
 
     findAll() {
@@ -22,15 +26,24 @@ export class MusicRepository {
     }
 
     fondOne(id: number) {
-        return this.muscReposiotry.findOneBy({ id })
+        return this.muscReposiotry
+            .createQueryBuilder('music')
+            .where('music.id = :id', { id })
+            .getOne()
     }
 
-    update(id: number, data:UpdateMusicDto) {
+    update(id: number, data: UpdateMusicDto) {
+        const updatedMusic = new MusicEntity()
+        updatedMusic.id = id
+        updatedMusic.name = data.name
+        updatedMusic.duration = data.duration
+        updatedMusic.artistId = data.aristId
 
+        return this.muscReposiotry.update(id, updatedMusic)
     }
 
     remove(id: number) {
-
+        return this.muscReposiotry.softDelete(id)
     }
 
 
