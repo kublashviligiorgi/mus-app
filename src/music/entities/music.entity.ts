@@ -3,13 +3,13 @@ import { Column, CreateDateColumn, DeleteDateColumn, Entity, PrimaryGeneratedCol
 @Entity()
 export class MusicEntity {
     @PrimaryGeneratedColumn()
-    id: number
+    id: number;
 
-    @Column({type: 'string', length: 100})
+    @Column()
     name: string;
 
-    @Column({type: 'number'})
-    artistId: number;
+    @Column({type:'int'})
+    authorId: number;
 
     @Column({type: 'decimal'})
     duration: number;

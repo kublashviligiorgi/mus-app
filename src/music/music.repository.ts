@@ -15,7 +15,7 @@ export class MusicRepository {
     create(data: CreateMusicDto) {
         const newMusic = new MusicEntity()
         newMusic.name = data.name
-        newMusic.artistId = data.aristId
+        newMusic.authorId = data.authorId
         newMusic.duration = data.duration
 
         return this.muscReposiotry.save(newMusic)
@@ -37,7 +37,7 @@ export class MusicRepository {
         updatedMusic.id = id
         updatedMusic.name = data.name
         updatedMusic.duration = data.duration
-        updatedMusic.artistId = data.aristId
+        updatedMusic.authorId = data.authorId
 
         return this.muscReposiotry.update(id, updatedMusic)
     }
