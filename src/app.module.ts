@@ -4,7 +4,6 @@ import { AppService } from './app.service';
 import { AlbumModule } from './album/album.module';
 import { MusicModule } from './music/music.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
-
 @Module({
   imports: [
     MusicModule, AlbumModule,
@@ -22,3 +21,4 @@ import { TypeOrmModule } from '@nestjs/typeorm';
   providers: [AppService],
 })
 export class AppModule { }
+  
