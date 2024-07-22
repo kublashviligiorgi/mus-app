@@ -1,9 +1,9 @@
 import { Injectable } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
-import { AlbumEntity } from "./album.entity";
+import { AlbumEntity } from "./entities/album.entity";
 import { Repository } from "typeorm";
-import { CreateAlbumDto } from "../dto/create-album.dto";
-import { UpdateAlbumDto } from "../dto/update-album.dto";
+import { CreateAlbumDto } from "./dto/create-album.dto";
+import { UpdateAlbumDto } from "./dto/update-album.dto";
 
 @Injectable()
 export class AlbumRepository {
