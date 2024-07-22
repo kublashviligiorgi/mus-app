@@ -5,10 +5,10 @@ export class AuthorEntity {
     @PrimaryGeneratedColumn()
     id: number;
 
-    @Column({ type: 'string', length: 100 })
+    @Column({ type: 'varchar', length: 100 })
     firstName: string;
 
-    @Column({ type: 'string', length: 100 })
+    @Column({ type: 'varchar', length: 100 })
     lastName: string;
 
     @Column({type:'longtext'})

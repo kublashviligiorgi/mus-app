@@ -8,7 +8,7 @@ export class CreateMusicDto {
     name: string
 
     @IsNumber()
-    aristId: number
+    authorId: number
 
     @IsNumber()
     duration: number
