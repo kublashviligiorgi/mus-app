@@ -29,7 +29,7 @@ export class AuthorRepository {
     findOne(id: number) {
         return this.authorRepository
             .createQueryBuilder('author')
-            .where('athor.id = :id', { id })
+            .where('author.id = :id', { id })
             .getOne()
     }
 
